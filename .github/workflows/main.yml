@@ -34,5 +34,5 @@ jobs:
      
       - name: Copy code from GCS to Vertex AI Platform
         run: |
-          gsutil cp -r gs://poc-buck/ /home/jupyter/
+          gsutil cp -r gs://poc-buck/ /home/jupyter/data/
        
