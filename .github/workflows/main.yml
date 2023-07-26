@@ -26,10 +26,14 @@ jobs:
           destination: 'poc-buck'
                     
 
-      - name: Copy data to GCS
-        uses: 'google-github-actions/upload-cloud-storage@v1'
-        with:
-          path: 'poc-buck'
-          destination: 'demo211'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+
+      - name: 'Use gcloud CLI'
+        run: 'gcloud info'
+        
+      - name: Download Model from GCS
+        run: |-
+          gsutil -m cp -r gs://poc-buck/ demo211/
 
 
