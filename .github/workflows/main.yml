@@ -3,7 +3,7 @@ name: Deploy to Vertex AI Notebooks
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
