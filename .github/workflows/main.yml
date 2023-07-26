@@ -33,8 +33,9 @@ jobs:
           # Replace "your-notebook-name" with the name of your Vertex AI notebook instance
           
           gsutil cp -r gs://poc-buck/notebooks/ /tmp/
-          gcloud ai notebooks instances add-metadata ${{ secrets.INSTANCE_NAME }} \
-            --metadata=code_path=/tmp/ \
+
+          gcloud ai notebooks instances update ${{ secrets.INSTANCE_NAME }} \
+            --update-labels=data_path=/tmp/ \
             --project='eternal-channel-394004'
 
 
