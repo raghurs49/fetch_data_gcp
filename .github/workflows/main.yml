@@ -22,17 +22,6 @@ jobs:
       - name: Copy data to GCS
         uses: 'google-github-actions/upload-cloud-storage@v1'
         with:
-          path: 'notebooks'
-          destination: 'poc-buck'
-                    
-
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
-
-      - name: 'Use gcloud CLI'
-        run: 'gcloud info'
+          path: ${{ secrets.GH_FOLDER_PATH }}'
+          destination: ${{ secrets.GCS_PATH }}
      
-      - name: Copy code from GCS to Vertex AI Platform
-        run: |
-          gsutil cp -r gs://poc-buck/ /home/jupyter/data/
-       
