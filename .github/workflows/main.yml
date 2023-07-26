@@ -26,9 +26,10 @@ jobs:
           destination: 'poc-buck'
                     
 
-      - name: Download Model from GCS
-        run: |-
-          mkdir -p ./models
-          gsutil -m cp -r gs://poc-buck/notebooks notebooks/
+      - name: Copy data to GCS
+        uses: 'google-github-actions/upload-cloud-storage@v1'
+        with:
+          path: 'poc-buck'
+          destination: 'demo211'
 
 
