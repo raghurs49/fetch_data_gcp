@@ -27,7 +27,7 @@ jobs:
 
       - name: Sync code to Vertex AI notebook
         run: |
-          gcloud ai notebooks instances sync ${{ secrets.INSTANCE_NAME }} \
+          gcloud notebooks instances sync ${{ secrets.INSTANCE_NAME }} \
             --source-bucket=poc-buck\
             --source-dir=notebooks \
             --project=eternal-channel-394004
