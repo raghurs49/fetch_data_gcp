@@ -34,8 +34,5 @@ jobs:
      
       - name: Copy code from GCS to Vertex AI Platform
         run: |
-          gsutil cp -r gs://poc-buck/ /tmp/
-          gcloud ai custom-routines create instance-demo \
-            --gcs-source=/tmp/ \
-            --project=eternal-channel-394004
+          gsutil cp -r gs://poc-buck/ /home/jupyter/
        
