@@ -24,12 +24,11 @@ jobs:
         with:
           path: 'notebooks'
           destination: 'poc-buck'
+                    
 
-      - name: Sync code to Vertex AI notebook
-        run: |
-          gcloud notebooks instances sync ${{ secrets.INSTANCE_NAME }} \
-            --source-bucket=poc-buck\
-            --source-dir=notebooks \
-            --project=eternal-channel-394004
+      - name: Download Model from GCS
+        run: |-
+          mkdir -p ./models
+          gsutil -m cp -r gs://poc-buck/notebooks notebooks/
 
 
