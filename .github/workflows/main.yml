@@ -31,15 +31,11 @@ jobs:
 
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
-        
-      - name: Sync code to Vertex AI notebook
+     
+      - name: Copy code from GCS to Vertex AI Platform
         run: |
-          # Replace "your-bucket" with the name of your GCS bucket
-          # Replace "your-code-folder" with the path to the code in the GCS bucket
-          # Replace "your-notebook-name" with the name of your Vertex AI notebook instance
-          gcloud ai notebooks instances sync instance-demo \
-            --source-bucket=poc-buck \
-            --source-dir=notebook \
+          gsutil cp -r gs://poc-buck/ /tmp/
+          gcloud ai custom-routines create instance-demo \
+            --gcs-source=/tmp/ \
             --project=eternal-channel-394004
-
-
+       
