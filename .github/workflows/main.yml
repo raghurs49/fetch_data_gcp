@@ -32,7 +32,7 @@ jobs:
           # Replace "your-project-id" with your GCP project ID
           # Replace "your-notebook-name" with the name of your Vertex AI notebook instance
           
-          gsutil cp -r misc_data_bucket_gcp/notebooks/ /tmp/
+          gsutil cp -r gs://misc_data_bucket_gcp/notebooks/ /tmp/
           gcloud ai notebooks instances add-metadata ${{ secrets.INSTANCE_NAME }} \
             --metadata=code_path=/tmp/ \
             --project='eternal-channel-394004'
