@@ -25,8 +25,16 @@ jobs:
           path: 'notebooks'
           destination: 'misc_data_bucket_gcp'
 
-      - name: Deploy to Vertex AI Notebook 1
+      - name: Copy code from GCS to Vertex AI notebook
         run: |
-          gcloud ai notebooks instances update ${{ secrets.INSTANCE_NAME }} \
-            --update-labels=script=/content/code/main.py
+          # Replace "your-bucket" with the name of your GCS bucket
+          # Replace "your-code-folder" with the path to the code folder within the GCS bucket
+          # Replace "your-project-id" with your GCP project ID
+          # Replace "your-notebook-name" with the name of your Vertex AI notebook instance
+          
+          gsutil cp -r misc_data_bucket_gcp/notebooks /tmp/
+          gcloud ai notebooks instances add-metadata ${{ secrets.INSTANCE_NAME }} \
+            --metadata=code_path=/tmp/ \
+            --project='eternal-channel-394004'
+
 
