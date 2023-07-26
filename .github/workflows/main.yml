@@ -25,20 +25,11 @@ jobs:
           path: 'notebooks'
           destination: 'poc-buck'
 
-      - name: Copy code from GCS to Vertex AI notebook
+      - name: Sync code to Vertex AI notebook
         run: |
-          # Replace "your-bucket" with the name of your GCS bucket
-          # Replace "your-code-folder" with the path to the code folder within the GCS bucket
-          # Replace "your-project-id" with your GCP project ID
-          # Replace "your-notebook-name" with the name of your Vertex AI notebook instance
-          
-          gsutil cp -r gs://poc-buck/notebooks/ /tmp/notebook
-
-      - name: Upload code to Vertex AI Platform
-        run: |
-          # Replace "your-model" with the name of your model in the Vertex AI Platform
-          # Replace "your-version" with the version of the model
-          # Replace "your-code-folder" with the path to the code folder within the GCS bucket
-          gcloud ai custom-jobs upload-code /tmp/notebooks
+          gcloud ai notebooks instances sync ${{ secrets.INSTANCE_NAME }} \
+            --source-bucket=poc-buck\
+            --source-dir=notebooks \
+            --project=eternal-channel-394004
 
 
