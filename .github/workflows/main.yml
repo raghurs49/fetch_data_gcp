@@ -22,6 +22,6 @@ jobs:
       - name: Copy data to GCS
         uses: 'google-github-actions/upload-cloud-storage@v1'
         with:
-          path: ${{ secrets.GH_FOLDER_PATH }}'
+          path: ${{ secrets.GH_FOLDER_PATH }}
           destination: ${{ secrets.GCS_PATH }}
      
